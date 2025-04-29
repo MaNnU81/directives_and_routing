@@ -27,10 +27,11 @@ body {
     padding: 16px;
     border: 1px solid black;
     border-radius: 40% 0% 40% 0% ;
-    -webkit-box-shadow: 5px 5px 14px 0px #000000; 
-    box-shadow: 5px 5px 14px 0px #000000;
+    box-shadow: 9px 12px 28px 1px rgba(230,10,247,0.28);
+-webkit-box-shadow: 9px 12px 28px 1px rgba(230,10,247,0.28);
+-moz-box-shadow: 9px 12px 28px 1px rgba(230,10,247,0.28);
     margin-top: 24px;
-    
+    background-color: rgba(4, 247, 4, 0.11);
 
 }
 
