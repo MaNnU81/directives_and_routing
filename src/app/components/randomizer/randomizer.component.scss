@@ -1,0 +1,64 @@
+/* randomizer.component.scss */
+.controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+  .student-img{
+    width: 80px;          
+    height: 80px;
+    border-radius: 50%;   
+    object-fit: cover; 
+
+}
+  
+  .size-selector {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: white;
+  }
+  
+  .groups-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // Sempre 2 colonne
+    gap: 20px;
+    margin-top: 24px;
+  
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr; // 1 colonna su mobile
+    }
+  }
+  .group-card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    // border-radius: 40% 0% 40% 0% ;
+    border-radius: 24px;
+    border: 1px solid black;
+    -webkit-box-shadow: 5px 5px 14px 0px #000000; 
+    box-shadow: 5px 5px 14px 0px #000000;
+    
+    
+    h3 {
+      color: #333;
+      text-align: center;
+    }
+  }
+  
+  .students-in-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-around;
+  }
+
+  .student-card {
+    display: flex;
+    flex-direction: column;  /* Disposizione verticale */
+    align-items: center;     /* Centra orizzontalmente */
+    gap: 8px;               /* Spazio tra immagine e nome */
+    text-align: center;     /* Allinea il testo al centro */
+    
+}

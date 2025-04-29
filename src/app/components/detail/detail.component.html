@@ -1,12 +1,12 @@
 @if (student) {
 
     <div class="student-card">
-        <h2>{{student.name}} {{student.surname}}</h2>
-        <span>{{student.dob}}</span>
+        <h2 class="student-name">{{student.name}} {{student.surname}}</h2>
         <img class="student-img" src="{{student.imageUrl}}" alt="">
-        <span>{{student.country}}</span>
-        <span>{{student.gender}}</span>
-        <span>{{student.marks}}</span>
+        <span class="student-info">born on:{{student.dob}}</span>
+        <span class="student-info">from: {{student.country}}</span>
+        <span class="student-info">gender:{{student.gender}}</span>
+        <!-- <span>marks: {{student.marks}}</span> -->
         
     </div>
 }

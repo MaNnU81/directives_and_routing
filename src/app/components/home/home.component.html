@@ -1,9 +1,9 @@
-<button (click)="sortByAge()">Sort by Age </button>
-<button (click)="sortBySurname()">Sort by Surname</button>
+<button class="btn-sort" (click)="sortByAge()">Sort by Age </button>
+<button class="btn-sort" (click)="sortBySurname()">Sort by Surname</button>
 
 
 
-<div>
+<div class="container">
     @for (student of students; track $index) {
         <div class="student-card">
             <img class="student-img" src="{{student.imageUrl}}" alt="">

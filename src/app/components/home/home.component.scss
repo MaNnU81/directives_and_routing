@@ -1,3 +1,7 @@
+body {
+    
+}
+
 .student-img{
     width: 100px;
     height: 100px;
@@ -7,10 +11,30 @@
 
 }
 
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; 
+    // background-image: url("/assets/pentagon_pattern_6822044.jpg");
+    
+    
+}
+
 .student-card{
     display: flex;
     align-items: center;
     gap: 16px;
     padding: 16px;
+    border: 1px solid black;
+    border-radius: 40% 0% 40% 0% ;
+    -webkit-box-shadow: 5px 5px 14px 0px #000000; 
+    box-shadow: 5px 5px 14px 0px #000000;
+    margin-top: 24px;
+    
 
+}
+
+.btn-sort{
+    display: inline;
+    border-right: 12px;
 }

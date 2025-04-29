@@ -1,0 +1,19 @@
+.student-img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 50%;
+    margin-bottom: 40px;
+
+}
+
+.student-name {
+font-size: 80px;
+}
+
+.student-info {
+    display: flex;
+    font-size: 32px;
+   
+}

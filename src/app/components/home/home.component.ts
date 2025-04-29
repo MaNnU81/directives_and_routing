@@ -11,30 +11,32 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeComponent {
 
-students: Student[] = [];
-studentServ = inject(StudentService);
+  students: Student[] = [];
+  studentServ = inject(StudentService);
 
-constructor(){
-  this.studentServ.getStudents().subscribe({
-  next:(data) => this.students = data,
-  error: (err) => console.log(err)
-  
-  })
-}
-sortBySurname() {
- return
+  constructor() {
+    this.studentServ.getStudents().subscribe({
+      next: (data) => this.students = data,
+      error: (err) => console.log(err)
+
+    })
   }
-  sortByAge() {
-    
-  this.students.sort((a,b) => {
-    const date1 = new Date(a.dob).getTime()
-    console.log(date1);
-    
-    const date2 = new Date(b.dob).getTime()
+  sortBySurname() {
+    this.students.sort((a, b) => a.surname.localeCompare(b.surname));
+  }
 
-   return date1 - date2
-    
-     })
+
+  sortByAge() {
+
+    this.students.sort((a, b) => {
+      const date1 = new Date(a.dob).getTime()
+      console.log(date1);
+
+      const date2 = new Date(b.dob).getTime()
+
+      return date1 - date2
+
+    })
   }
 
 }

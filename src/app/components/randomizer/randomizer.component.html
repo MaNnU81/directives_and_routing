@@ -1,1 +1,35 @@
-<p>randomizer works!</p>
+<div class="container">
+    <div class="controls">
+      <select [(ngModel)]="groupSize" class="size-selector">
+        <option value="2">Coppie (2 studenti)</option>
+        <option value="3">Terzetti (3 studenti)</option>
+        <option value="4">Quartetti (4 studenti)</option>
+      </select>
+      
+      <button class="btn-sort" (click)="randomizeGroups()">
+        Randomizza!!
+      </button>
+    </div>
+  
+    <div class="stats">
+      {{ groups.length }} gruppi da {{ groupSize }} - Totale studenti: {{ students.length }}
+    </div>
+  
+    <div class="groups-container">
+      @for (group of groups; track $index) {
+        <div class="group-card">
+          <h3>Gruppo {{ $index + 1 }}</h3>
+          <div class="students-in-group">
+            @for (student of group; track student.id) {
+              <div class="student-card">
+                <img [src]="student.imageUrl" [alt]="student.name" class="student-img">
+                <a [routerLink]="['/detail', student.id]" class="student-name">
+                  {{ student.name }} {{ student.surname }}
+                </a>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>

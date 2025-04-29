@@ -11,16 +11,16 @@ export class StudentService {
   readonly BASE_URL = 'https://68109e0327f2fdac2412156d.mockapi.io/'
   readonly STUDENT_ENDPOINT = "students/"
 
-  constructor(private htttp: HttpClient) {
+  constructor(private http: HttpClient) {
 
     
    }
 
    getStudents(): Observable <Student[]>{
-    return this.htttp.get<Student[]>(this.BASE_URL + this.STUDENT_ENDPOINT) 
+    return this.http.get<Student[]>(this.BASE_URL + this.STUDENT_ENDPOINT) 
   }
 
   getStudent(id: string): Observable<Student> {
-    return this.htttp.get<Student>(this.BASE_URL + this.STUDENT_ENDPOINT + id) 
+    return this.http.get<Student>(this.BASE_URL + this.STUDENT_ENDPOINT + id) 
   }
 }
