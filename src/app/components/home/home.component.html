@@ -1,0 +1,13 @@
+<button (click)="sortByAge()">Sort by Age </button>
+<button (click)="sortBySurname()">Sort by Surname</button>
+
+
+
+<div>
+    @for (student of students; track $index) {
+        <div class="student-card">
+            <img class="student-img" src="{{student.imageUrl}}" alt="">
+            <a [routerLink]="['/detail', student.id]" class="student-name"> {{student.name}} {{student.surname}}</a>
+        </div>
+    }
+</div>
