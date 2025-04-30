@@ -30,7 +30,7 @@ export class HomeComponent {
 
     this.students.sort((a, b) => {
       const date1 = new Date(a.dob).getTime()
-      console.log(date1);
+      
 
       const date2 = new Date(b.dob).getTime()
 

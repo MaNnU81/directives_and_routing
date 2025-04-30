@@ -1,13 +1,23 @@
 @if (student) {
-
     <div class="student-card">
+        
         <h2 class="student-name">{{student.name}} {{student.surname}}</h2>
         <img class="student-img" src="{{student.imageUrl}}" alt="">
         <span class="student-info">born on:{{student.dob}}</span>
         <span class="student-info">from: {{student.country}}</span>
         <span class="student-info">gender:{{student.gender}}</span>
+        <span class="student-info">marks:{{student.marks}}</span>
+        <button class="btn-sort" (click)="deleteStudent()">Delete</button>
         <!-- <span>marks: {{student.marks}}</span> -->
         
     </div>
+
+
+    <form (submit)="getMarks($event)" id="form">
+        <label for="mark">Aggiungi un voto</label>
+        <input type="number" name="mark" id="mark" min="0" max="10" required>
+        <button type="submit">aggiungi</button>
+    </form>
 }
 
+<!-- (click)="addMarksToStudent()"  -->
