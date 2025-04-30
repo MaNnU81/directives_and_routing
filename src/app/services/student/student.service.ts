@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Student } from '../../model/student';
-import { Observable } from 'rxjs';
+import { Observable, takeLast } from 'rxjs';
 
 
 @Injectable({
@@ -52,5 +52,37 @@ export class StudentService {
       headers: { 'Content-Type': 'application/json' }
     });
 }
+
+addStudent() {
+  const testStudent: Student = {
+    name: 'Zena',
+    surname: 'Genova',
+    country:  'Italy',
+    gender: 'Intersex woman',
+    dob: '1961-05-08T00:36:17.682Z',
+    imageUrl: "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/36.jpg",
+    marks: []
+}
+const url = this.BASE_URL + this.STUDENT_ENDPOINT;
+
+fetch(url, {
+  method: 'POST',
+  headers: {'content-type':'application/json'},
+  
+  body: JSON.stringify(testStudent)
+}).then(res => {
+  
+      return res.json();
+  
+  
+}).then(task => {
+  console.log(task);
+  
+}).catch(error => {
+ console.log(error);
  
+})
+ 
+}
+
 }
