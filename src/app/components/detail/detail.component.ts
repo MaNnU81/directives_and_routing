@@ -60,12 +60,25 @@ export class DetailComponent {
     this.addMarksToStudent(this.student!.marks);
   }
 
-  addMarksToStudent(newMarks: number[]){
-    if (this.student) {
-      this.studentServ.addMarks(this.student?.id, newMarks)
-      .then(modifiedStudent => this.student = modifiedStudent)
-    }
+  // addMarksToStudent(newMarks: number[]){
+  //   if (this.student) {
+  //     this.studentServ.addMarks(this.student?.id, newMarks)
+  //     .then(modifiedStudent => this.student = modifiedStudent)
+  //   }
     
-  }
+  // }
 
+
+  addMarksToStudent(newMarks: number[]) {
+   
+    
+    if (this.student) {
+      // this.studentServ.addMarks(this.student?.id, newMarks)
+        // .then(modifiedStudent => this.student = modifiedStudent)
+        this.studentServ.addMarks1(newMarks,this.student).subscribe({
+          next: data => this.student = data,
+          error: err => console.log(err),
+        })
+    }
+  }
 }

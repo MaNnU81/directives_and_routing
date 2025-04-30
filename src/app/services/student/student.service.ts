@@ -26,23 +26,31 @@ export class StudentService {
     return this.http.get<Student>(this.BASE_URL + this.STUDENT_ENDPOINT + id) 
   }
 
-  addMarks(id: string, marks: number[]): Promise<Student>{
+  // addMarks(id: string, marks: number[]): Promise<Student>{
 
-    const patchValue = {marks: marks}
+  //   const patchValue = {marks: marks}
 
-    return fetch(this.BASE_URL + this.STUDENT_ENDPOINT + id, {
-      method: 'PUT',
-      headers: {'content-type':'application/json'},
-      body: JSON.stringify(patchValue)
-    }).then(res => {
+  //   return fetch(this.BASE_URL + this.STUDENT_ENDPOINT + id, {
+  //     method: 'PUT',
+  //     headers: {'content-type':'application/json'},
+  //     body: JSON.stringify(patchValue)
+  //   }).then(res => {
 
-          return res.json();
+  //         return res.json();
       
-      // handle error
-    }).catch(error => {
-      // handle error
-    })
-  }
+  //     // handle error
+  //   }).catch(error => {
+  //     // handle error
+  //   })
+  // }
 
+  addMarks1(marksArray: number[], student: Student): Observable<Student> {
+    const url = this.BASE_URL + this.STUDENT_ENDPOINT + student.id;
+    const body = { marks: marksArray };
+
+    return this.http.put<Student>(url, body, {
+      headers: { 'Content-Type': 'application/json' }
+    });
+}
  
 }
