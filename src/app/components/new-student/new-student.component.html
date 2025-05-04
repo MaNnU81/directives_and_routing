@@ -5,9 +5,17 @@
 
     <label for="name">Nome:</label>
     <input formControlName="name" type="text" id="name">
+    <div class="error" *ngIf="myForm.get('name')?.invalid && (myForm.get('name')?.touched || myForm.get('name')?.dirty)">
+        <span *ngIf="myForm.get('name')?.errors?.['required']">Il nome è obbligatorio.</span>
+        <span *ngIf="myForm.get('name')?.errors?.['minlength']">Il nome deve avere almeno 3 caratteri.</span>
+      </div>
 
     <label for="surname">Cognome:</label>
     <input type="text" id="surname" formControlName="surname">
+    <div class="error" *ngIf="myForm.get('name')?.invalid && (myForm.get('name')?.touched || myForm.get('name')?.dirty)">
+        <span *ngIf="myForm.get('name')?.errors?.['required']">Il cognome è obbligatorio.</span>
+        <span *ngIf="myForm.get('name')?.errors?.['minlength']">Il cognome deve avere almeno 3 caratteri.</span>
+      </div>
 
     <label for="dob">Data di Nascita:</label>
     <input   [min]="minDate" [max]="maxDate" type="date" name="dob" id="dob" formControlName="dob">
