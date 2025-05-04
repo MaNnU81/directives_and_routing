@@ -10,7 +10,7 @@
     <input type="text" id="surname" formControlName="surname">
 
     <label for="dob">Data di Nascita:</label>
-    <input type="date" name="dob" id="dob" formControlName="dob">
+    <input   [min]="minDate" [max]="maxDate" type="date" name="dob" id="dob" formControlName="dob">
 
     <!-- <label for="country">Nazionalità:</label>
     <input type="text" name="country" id="country"> -->

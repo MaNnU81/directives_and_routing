@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { StudentService } from '../../services/student/student.service';
-import {   FormControl, FormGroup, MinLengthValidator, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, MinLengthValidator, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Student } from '../../model/student';
@@ -19,6 +19,9 @@ interface Country {
   styleUrl: './new-student.component.scss'
 })
 export class NewStudentComponent implements OnInit {
+  minDate!: string;
+  maxDate!: string;
+
   private http = inject(HttpClient);
   studentServ = inject(StudentService)
 
@@ -28,21 +31,22 @@ export class NewStudentComponent implements OnInit {
 
 
   myForm = new FormGroup({
-    name: new FormControl('',  [Validators.required, Validators.minLength(3)]),
-    surname: new FormControl('',  [Validators.required, Validators.minLength(3)]),
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    surname: new FormControl('', [Validators.required, Validators.minLength(3)]),
     dob: new FormControl('', Validators.required),
     country: new FormControl('', Validators.required)
   })
 
   ngOnInit() {
     this.fetchCountries();
+    this.setDateLimits();
   }
 
   fetchCountries() {
     this.http.get<Country[]>('https://restcountries.com/v3.1/all?fields=name,cca2')
       .subscribe({
         next: (data) => {
-          this.countries = data.sort((a, b) => 
+          this.countries = data.sort((a, b) =>
             a.name.common.localeCompare(b.name.common)
           );
           this.isLoading = false;
@@ -59,11 +63,11 @@ export class NewStudentComponent implements OnInit {
   submitForm() {
     if (this.myForm.valid) {
       const formData = this.myForm.value;
-      
+
       // Trova il nome completo della nazione dal codice
       const selectedCountry = this.countries.find(c => c.cca2 === formData.country);
       const countryName = selectedCountry?.name.common || formData.country || '';
-  
+
       // Prepara solo i dati effettivamente presenti nel form
       const studentData: Omit<Student, 'id' | 'marks'> = {
         name: formData.name!,
@@ -71,7 +75,7 @@ export class NewStudentComponent implements OnInit {
         country: countryName,
         dob: formData.dob!
       };
-  
+
       this.studentServ.addStudent(studentData)
         .then(response => {
           console.log('Studente creato:', response);
@@ -90,6 +94,19 @@ export class NewStudentComponent implements OnInit {
       });
     }
 
+  }
+
+  setDateLimits() {
+    const today = new Date();
+    this.maxDate = this.formatDate(today);
+  
+    const minDate = new Date();
+    minDate.setFullYear(today.getFullYear() - 150);
+    this.minDate = this.formatDate(minDate);
+  }
+  
+  formatDate(date: Date): string {
+    return date.toISOString().split('T')[0]; // formato yyyy-MM-dd
   }
 }
 
