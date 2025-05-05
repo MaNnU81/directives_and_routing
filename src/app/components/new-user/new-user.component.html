@@ -1,16 +1,13 @@
 
-<button (click)="fakeLogin()">login NOW</button>
 
-<form [formGroup]="loginForm"  (ngSubmit)="checkUser()" >
+
+<form [formGroup]="loginForm"  (ngSubmit)="addUser()" >
     <label for="email">Email:</label>
     <input formControlName="email" type="email" id="email">
 
     <label  for="password">Password:</label>
     <input formControlName="password" type="password" id="password">
 
-    <button>Accedi</button>
+    <button>Registrati</button>
 
 </form>
-
-<a [routerLink]="['/newUser']">non hai un account? registrati</a>
-
