@@ -12,12 +12,13 @@
         
     </div>
 
-
+@if (authServ.isAuth) {
     <form (submit)="getMarks($event)" id="form">
         <label for="mark">Aggiungi un voto</label>
         <input type="number" name="mark" id="mark" min="0" max="10" required>
         <button type="submit">aggiungi</button>
     </form>
 }
+    
+}
 
-<!-- (click)="addMarksToStudent()"  -->

@@ -10,9 +10,12 @@
 <header>
 <h1>Student Manager</h1>
 <nav class="link-btn">
-  <a routerLink="/">home</a>
+  <a routerLink="/home">home</a>
   <a [routerLink]="['randomize']">randomize</a>
-  <a [routerLink]="['addStudent']">addStudent</a>
+  <a *ngIf="authServ.isAuth" [routerLink]="['addStudent']">addStudent</a>
+  <a *ngIf="!authServ.isAuth" [routerLink]="['login']">login</a>
+  <a  *ngIf="authServ.isAuth" (click)="logout()">logout</a>
+
   <!-- <a [routerLink]="['detail']">detail</a> -->
 
 </nav>

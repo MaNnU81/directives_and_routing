@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentService } from '../../services/student/student.service';
 import { Student } from '../../model/student';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-detail',
@@ -11,6 +12,7 @@ import { Student } from '../../model/student';
 })
 export class DetailComponent {
   route = inject(ActivatedRoute);
+  authServ = inject(AuthService);
   studentServ = inject(StudentService)
   student?: Student;
   router = inject(Router);
