@@ -1,13 +1,18 @@
 
 
 
-<form [formGroup]="loginForm"  (ngSubmit)="addUser()" >
+<form [formGroup]="NewUserForm" (ngSubmit)="submitForm()">
     <label for="email">Email:</label>
     <input formControlName="email" type="email" id="email">
+    <div *ngIf="NewUserForm.get('email')?.invalid && NewUserForm.get('email')?.touched">
+        Inserisci un'email valida
+    </div>
 
-    <label  for="password">Password:</label>
+    <label for="password">Password:</label>
     <input formControlName="password" type="password" id="password">
+    <div *ngIf="NewUserForm.get('password')?.invalid && NewUserForm.get('password')?.touched">
+        La password deve avere almeno 6 caratteri
+    </div>
 
-    <button>Registrati</button>
-
+    <button type="submit" [disabled]="NewUserForm.invalid">Registrati</button>
 </form>

@@ -78,6 +78,7 @@ export class NewStudentComponent implements OnInit {
 
       this.studentServ.addStudent(studentData)
         .then(response => {
+          alert('Studente creato')
           console.log('Studente creato:', response);
           this.myForm.reset();
         })

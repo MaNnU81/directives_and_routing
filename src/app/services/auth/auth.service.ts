@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
+import { User } from '../../model/student';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,9 @@ export class AuthService {
         return userExists;
       })
     );
+  }
+
+  addUser(userData: User): Observable<any> {
+    return this.http.post(this.API_URL, userData);
   }
 }

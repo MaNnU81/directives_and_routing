@@ -8,3 +8,9 @@ export interface Student {
     marks: number[]
     id?: string
   }
+
+  export interface User {
+    email: string
+    password: string
+    id?: string; 
+  }
