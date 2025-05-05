@@ -29,6 +29,9 @@ authServ = inject(AuthService);
   submitForm() {
     if (this.NewUserForm.valid) {
       const { email, password } = this.NewUserForm.value;
+
+//       const email = this.NewUserForm.value.email;
+// const password = this.NewUserForm.value.password;
       
       this.authServ.addUser({ email: email!, password: password! })
         .subscribe({
