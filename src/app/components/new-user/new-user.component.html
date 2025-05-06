@@ -8,11 +8,13 @@
         Inserisci un'email valida
     </div>
 
-    <label for="password">Password:</label>
+    <label for="password">Inserisci una nuova Password:</label>
     <input formControlName="password" type="password" id="password">
     <div *ngIf="NewUserForm.get('password')?.invalid && NewUserForm.get('password')?.touched">
         La password deve avere almeno 6 caratteri
     </div>
+    <label for="password">Reinserisci la Password:</label>
+    <input formControlName="password" type="password" id="password">
 
     <button type="submit" [disabled]="NewUserForm.invalid">Registrati</button>
 </form>
